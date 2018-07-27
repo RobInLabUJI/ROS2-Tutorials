@@ -61,7 +61,8 @@ WORKDIR /usr/local/share/cling/Jupyter/kernel
 USER root
 RUN pip3 install -e .
 RUN jupyter-kernelspec install cling-cpp11
-RUN chown -R ${NB_UID} ${HOME}
+RUN chmod -R a+rx ${HOME}
+RUN chown -R $NB_USER:users ${HOME}
 
 WORKDIR $HOME
 
